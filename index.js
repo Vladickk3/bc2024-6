@@ -4,15 +4,15 @@ const fs = require('fs');
 const path = require('path');
 const multer = require('multer');
 const swaggerDocs = require('./swagger');
-const exampleRoutes = require('./routes/example'); // Імпорт маршрутів з example.js
+const exampleRoutes = require('./routes/example'); 
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 const NOTES_DIR = path.join(__dirname, 'notes');
 
-// Для парсингу JSON
+
 app.use(express.json());
-// Для парсингу x-www-form-urlencoded
+
 app.use(express.urlencoded({ extended: true }));
 
 if (!fs.existsSync(NOTES_DIR)) {
@@ -33,7 +33,7 @@ app.get('/', (req, res) => {
   res.send('Welcome to my API!');
 });
 
-// Підключення маршрутів з example.js
+
 app.use('/api', exampleRoutes);
 
 // CRUD-операції для нотаток
